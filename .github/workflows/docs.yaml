@@ -23,8 +23,10 @@ jobs:
 
       - name: Build docs
         run: |
-          v doc -m -f html /tmp/v/vlib/ -o _docs
-          pushd _docs
+          pushd /tmp/v
+          v doc -m -f html vlib/ -o /tmp/docs
+          popd
+          pushd /tmp/docs
           ln -vs builtin.html index.html
           ls -alFh
           popd
