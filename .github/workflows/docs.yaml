@@ -15,7 +15,7 @@ jobs:
         run: |
           export DEBIAN_FORNTEND=noninteractive
           sudo apt-get update
-          sudo apt-get install --yes --no-install-recommends build-essetioal
+          sudo apt-get install --yes --no-install-recommends build-essential
           git clone --depth=1 https://github.com/vlang/v /tmp/v
           cd /tmp/v
           make
