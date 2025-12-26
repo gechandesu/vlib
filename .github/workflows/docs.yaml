@@ -24,7 +24,6 @@ jobs:
       - name: Build docs
         run: |
           v doc -m -f html /tmp/v/vlib/ -o _docs
-          v doc -f html -m .
           pushd _docs
           ln -vs builtin.html index.html
           ls -alFh
