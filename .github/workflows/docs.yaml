@@ -1,7 +1,7 @@
 name: Docs
 on:
-  push:
-    branches: [ "main" ]
+  schedule:
+    - cron: '0 */6 * * *'
   workflow_dispatch:
 
 jobs:
