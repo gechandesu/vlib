@@ -1,7 +1,7 @@
 name: Docs
 on:
-  push:
-    branches: [ "main" ]
+  schedule:
+    - cron: '0 */6 * * *'
   workflow_dispatch:
 
 jobs:
@@ -24,8 +24,11 @@ jobs:
       - name: Build docs
         run: |
           v install markdown
-          v doc -m -f html /tmp/v/vlib/ -o _docs
-          pushd _docs
+          pushd /tmp/v
+          v doc -m -f html vlib/ -o /tmp/docs
+          popd
+          pushd /tmp/docs
+          rm index.html
           ln -vs builtin.html index.html
           ls -alFh
           popd
@@ -34,7 +37,7 @@ jobs:
         id: deployment
         uses: actions/upload-pages-artifact@v3
         with:
-          path: _docs/
+          path: /tmp/docs
 
   deploy:
     needs: build
