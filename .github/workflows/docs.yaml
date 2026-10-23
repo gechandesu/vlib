@@ -25,7 +25,7 @@ jobs:
         run: |
           v install markdown
           pushd /tmp/v
-          v doc -m -f html vlib/ -o /tmp/docs
+          v doc -os cross -m -f html vlib/ -o /tmp/docs
           popd
           pushd /tmp/docs
           rm index.html
